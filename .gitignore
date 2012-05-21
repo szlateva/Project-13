@@ -1,6 +1,37 @@
-*.class
+import info.gridworld.actor.ActorWorld;
+import info.gridworld.grid.Location;
+import info.gridworld.grid.BoundedGrid;
+import java.awt.Color;
 
-# Package Files #
-*.jar
-*.war
-*.ear
+/*
+ * This is the main class for Project 13 - Part 1.
+ * It sets up a world with 3 bugs, each drawing a separate word.
+ */
+public class Main
+{
+
+    public static void main(String[] args)
+    {
+        // Setup Bugs
+        Bug1 liveBug = new Bug1();
+        Bug2 likeBug = new Bug2();
+        Bug3 meBug   = new Bug3();
+
+        // Assign colors to bugs:
+        liveBug.setColor(Color.blue);
+        likeBug.setColor(Color.pink);
+        meBug.setColor(Color.cyan);
+
+        //Set bounded grid with size 30 rows x 45 columns:
+        BoundedGrid myGrid= new BoundedGrid(30,45);
+        ActorWorld world= new ActorWorld(myGrid);
+
+        // Add bugs onto world:
+        world.add(new Location(2,5),  liveBug);
+        world.add(new Location(11,5), likeBug);
+        world.add(new Location(26,5), meBug);
+
+        world.show();
+    }
+
+}
